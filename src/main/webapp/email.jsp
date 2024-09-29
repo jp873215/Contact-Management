@@ -4,10 +4,10 @@
 <%@ page import="java.io.PrintWriter" %>
 
 <%
-    if ((String) session.getAttribute("email") == null){
-        response.sendRedirect("login.jsp");
-        return;
-    }
+//     if ((String) session.getAttribute("email") == null){
+//         response.sendRedirect("login.jsp");
+//         return;
+//     }
     
     List<String> emailList = (List<String>) request.getAttribute("email");
 %>

@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-if (session.getAttribute("email") != null){
-    response.sendRedirect("success.jsp");
-    return;
-}
 %>
 <!DOCTYPE html> 
 <html lang="en">
@@ -95,7 +91,7 @@ if (session.getAttribute("email") != null){
     
 </head>
 <body>
-    <form action="sign" method="post">
+    <form action="signup" method="post">
         <input type="text" name="name" placeholder="Enter Name" required>
         <input type="text" name="email" placeholder="Enter Email" required>
         <input type="text" name="elabel" placeholder="Enter Label for Email ID" required>
@@ -104,8 +100,8 @@ if (session.getAttribute("email") != null){
         <input type="text" name="plabel" placeholder="Enter Label for Phone Number" required>
         <input type="radio" name="gender" value="Male">Male
         <input type="radio" name="gender" value="Female">Female
-        <input type="text" name="Home Address" placeholder="Enter Home Address" required>
-        <input type="text" name="Work Address" placeholder="Enter Work Address" required>
+        <input type="text" name="homeAddress" placeholder="Enter Home Address" required>
+        <input type="text" name="workAddress" placeholder="Enter Work Address" required>
         
         <input type="submit">
         <p>Already have account? <a href="login.jsp">Login</a></p>

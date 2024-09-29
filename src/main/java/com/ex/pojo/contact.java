@@ -14,6 +14,7 @@ public class contact {
     private String dateLabel;
     private String phoneLabel;
     private int PID;
+  
     
 
     public String getName() {

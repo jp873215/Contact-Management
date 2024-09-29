@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 @WebServlet("/listemail")
 public class listemail extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,7 +56,7 @@ class dbConnect{
         PrintWriter pw = response.getWriter();
         List<String> li = new ArrayList<>();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+        	Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection(URL, name, pass)) {
                 String query = "select Email_ID from ut_email_id where UID = ?;";
                 try (PreparedStatement pst = conn.prepareStatement(query)) {

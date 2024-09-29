@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.ex.pojo.contact" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,45 +56,47 @@
     </style>
 </head>
 <body>
-
-    <center><h1>Add Contact</h1></center>
-    <form action="addcontact" method="post">
+	<% contact obj = (contact) request.getAttribute("object"); %>
+    <center><h1><%= obj != null ? "Update Contact" : "Add Contact" %></h1></center>
+    
+    <form action="<%= obj != null ? "updateContact" : "addcontact" %>" method="post">
+        <% if (obj != null) { %>
+            <input type="hidden" name="PID" value="<%= obj.getPID() %>">
+        <% } %>
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter Name" required>
+        <input type="text" id="name" name="name" placeholder="Enter Name" value="<%= obj != null ? obj.getName() : "" %>" required>
 
         <label for="related_person">Related Person</label>
-        <input type="text" id="related_person" name="related_person" placeholder="How is the person related to you">
+        <input type="text" id="related_person" name="related_person" value="<%= obj != null ? obj.getRelatedPerson() : "" %>" placeholder="How is the person related to you">
 
         <label for="notes">Notes</label>
-        <textarea id="notes" name="notes" placeholder="Note about the Person"></textarea>
+        <textarea id="notes" name="notes" placeholder="Note about the Person"><%= obj != null ? obj.getNotes() : "" %></textarea>
 
         <label for="phone_number">Phone Number</label>
-        <input type="text" id="phone_number" name="phone_number" placeholder="Enter Phone Number">
+        <input type="text" id="phone_number" name="phone_number" placeholder="Enter Phone Number" value="<%= obj != null ? obj.getPhoneNumber() : "" %>">
         
         <label for="phone_number_label">Phone Number Label</label>
-        <input type="text" id="phone_number_label" name="phone_number_label" placeholder="Enter Label for Phone Number">
+        <input type="text" id="phone_number_label" name="phone_number_label" placeholder="Enter Label for Phone Number" value="<%= obj != null ? obj.getPhoneLabel() : "" %>">
 
-    
         <label for="email_id">Email ID</label>
-        <input type="text" id="email_id" name="email_id" placeholder="Enter Email ID">
+        <input type="text" id="email_id" name="email_id" placeholder="Enter Email ID" value="<%= obj != null ? obj.getEmailID() : "" %>">
 
-        <label for="email_id">Email ID Label</label>
-        <input type="text" id="email_id_label" name="email_id_label" placeholder="Enter Label for Email ID">
+        <label for="email_id_label">Email ID Label</label>
+        <input type="text" id="email_id_label" name="email_id_label" placeholder="Enter Label for Email ID" value="<%= obj != null ? obj.getEmailIDLabel() : "" %>">
 
         <label for="date">Date</label>
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="date" value="<%= obj != null ? obj.getDate() : "" %>">
 
         <label for="datelabel">Date Label</label>
-        <input type="text" id="datelabel" name="datelabel" placeholder="Enter Date Label">
+        <input type="text" id="datelabel" name="datelabel" placeholder="Enter Date Label" value="<%= obj != null ? obj.getDateLabel() : "" %>">
 
         <label for="home_address">Home Address</label>
-        <input type="text" id="home_address" name="home_address" placeholder="Enter Home Address">
+        <input type="text" id="home_address" name="home_address" placeholder="Enter Home Address" value="<%= obj != null ? obj.getHomeAddress() : "" %>">
 
         <label for="work_address">Work Address</label>
-        <input type="text" id="work_address" name="work_address" placeholder="Enter Work Address">
+        <input type="text" id="work_address" name="work_address" placeholder="Enter Work Address" value="<%= obj != null ? obj.getWorkAddress() : "" %>">
 
-        <input type="submit" value="Add Contact">
+        <input type="submit" value="<%= obj != null ? "Update Contact" : "Add Contact" %>">
     </form>
-
 </body>
 </html>

@@ -215,6 +215,116 @@ public class contactDAO {
     	}
     	return false;
     }
+    public contact getContact(int PID) {
+    	try {
+    		Connection conn = getConnection();
+    		String query = "SELECT cd.PID, cd.Name, cd.Note, cd.Related_Person, " +
+                    "cd.Home_Address, cd.Work_Address, " +
+                    "cp.Phone_No, cp.Label AS PhoneLabel, " +
+                    "ce.Email_ID, ce.Label AS EmailLabel, " +
+                    "cd2.Date, cd2.Label AS DateLabel " + 
+                    "FROM contact_detail cd " +
+                    "LEFT JOIN ct_phone cp ON cd.PID = cp.PID " +
+                    "LEFT JOIN ct_email_id ce ON cd.PID = ce.PID " +
+                    "LEFT JOIN ct_date cd2 ON cd.PID = cd2.PID " +
+                    "WHERE cd.PID = ?";
+    		
+    		try(PreparedStatement pst = conn.prepareStatement(query)){
+    			pst.setInt(1, PID);
+    			ResultSet rs = pst.executeQuery();
+    			if(rs.next()) {
+    				contact ct = new contact();
+    				ct.setName(rs.getString("Name"));
+    				ct.setPID(PID);
+    				ct.setNotes(rs.getString("Note"));
+    				ct.setRelatedPerson(rs.getString("Related_Person"));
+    				ct.setHomeAddress(rs.getString("Home_Address"));
+    				ct.setWorkAddress(rs.getString("Work_Address"));
+    				ct.setPhoneNumber(rs.getLong("Phone_No"));
+    				ct.setPhoneLabel(rs.getString("PhoneLabel"));
+    				ct.setEmailID(rs.getString("Email_ID"));
+    				ct.setEmailIDLabel(rs.getString("EmailLabel"));
+    				ct.setDate(rs.getString("Date"));
+    				ct.setDateLabel(rs.getString("DateLabel"));
+    				return ct;
+    				
+    				
+    			}
+    		}
+    		catch(Exception e) {
+    			System.out.println("Check the input value and name");
+    		}
+    	}
+    	catch(Exception e) {
+    		System.out.println("DB Error");
+    	}
+    	return null;
+    }
+    public boolean updateContact(contact ct) throws ClassNotFoundException, SQLException {
+        String updateQuery = "UPDATE contact_detail SET Name = ?, Note = ?, Related_Person = ?, " +
+                             "Home_Address = ?, Work_Address = ? WHERE PID = ?";
+        
+        String updatePhoneQuery = "UPDATE ct_phone SET Phone_No = ?, Label = ? WHERE PID = ?";
+        String updateEmailQuery = "UPDATE ct_email_id SET Email_ID = ?, Label = ? WHERE PID = ?";
+        String updateDateQuery = "UPDATE ct_date SET Date = ?, Label = ? WHERE PID = ?";
+        
+        Connection conn = getConnection();
+        try (PreparedStatement pst = conn.prepareStatement(updateQuery)) {
+            pst.setString(1, ct.getName());
+            pst.setString(2, ct.getNotes());
+            pst.setString(3, ct.getRelatedPerson());
+            pst.setString(4, ct.getHomeAddress());
+            pst.setString(5, ct.getWorkAddress());
+            pst.setInt(6, ct.getPID());
+            int res = pst.executeUpdate();
+            if (res !=0) {
+            	System.out.println("ulla vanten1");
+            	try (PreparedStatement pst1 = conn.prepareStatement(updatePhoneQuery)) {
+                    pst1.setLong(1, ct.getPhoneNumber());
+                    pst1.setString(2, ct.getPhoneLabel());
+                    pst1.setInt(3, ct.getPID());
+                    int res1 = pst1.executeUpdate();
+                    if (res1 != 0) {
+                    	System.out.println("ulla vanten2");
+                    	try (PreparedStatement pst2 = conn.prepareStatement(updateEmailQuery)) {
+                            pst2.setString(1, ct.getEmailID());
+                            pst2.setString(2, ct.getEmailIDLabel());
+                            pst2.setInt(3, ct.getPID());
+                            int res2 = pst2.executeUpdate();
+                            if (res2 != 0) {
+                            	System.out.println("ulla vanten3");
+                            	try (PreparedStatement pst3 = conn.prepareStatement(updateDateQuery)) {
+                                    pst3.setString(1, ct.getDate());
+                                    pst3.setString(2, ct.getDateLabel());
+                                    pst3.setInt(3, ct.getPID());
+                                    int res3 = pst3.executeUpdate();
+                                    if (res3 != 0) {
+                                    	System.out.println("ulla vanten4");
+                                    	return true;
+                                    }
+                                    
+                                }
+                            	catch (SQLException e) {
+                                    System.out.println("Database update error1: " + e.getMessage());}
+                            }
+                        }
+                    	catch (SQLException e) {
+                            System.out.println("Database update error2: " + e.getMessage());
+                        }
+                    }
+                    
+            	}
+            	catch (SQLException e) {
+                    System.out.println("Database update error: " + e.getMessage());
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Database update error3: " + e.getMessage());
+        }
+        return false;
+    }
+
 
     
 }

@@ -6,10 +6,10 @@
 <%@ page import="java.util.*" %>
 
 <% 
-if (session.getAttribute("email") == null){
-    response.sendRedirect("login.jsp");
-    return;
-}
+// if (session.getAttribute("email") == null){
+//     response.sendRedirect("login.jsp");
+//     return;
+// }
 %>
 <html lang="en">
 <head>
@@ -266,6 +266,7 @@ if (session.getAttribute("email") == null){
                 <input type="submit" value="Add Email">
             </form>
         </div>
+        
 
         <div class="card">
             <form action="listphone" method="post">
@@ -289,9 +290,12 @@ if (session.getAttribute("email") == null){
             response.sendRedirect("login.jsp");
             return;
         }
-    	
-        int uid = (int) session.getAttribute("UID");
-        
+    	Integer uid;
+    	if (session.getAttribute("UID") ==null){
+    		response.sendRedirect("login.jsp");	
+    		return;
+    	}        
+    	uid = (int) session.getAttribute("UID");
         contactDAO dao = new contactDAO();
         List<contact> li = dao.getAllContacts(uid);
     %>
@@ -336,10 +340,11 @@ if (session.getAttribute("email") == null){
                        	</form>
                         </td>
                         <td>						
-                        <form action="updateContact" style="display:inline" method="post">
+                        <form action="getContact" style="display:inline" method="post">
                        		<input type="hidden" name="updatecontact" value="<%= ct.getPID()%>">
                        		<input type="submit" value="Update">
                        	</form></td>
+                       	<td>
                     </tr>
                 <%
                 }

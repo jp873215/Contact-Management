@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ex.DAOs.contactDAO;
+import com.ex.enums.Enums;
 import com.ex.pojo.contact;
 
 
@@ -39,7 +40,7 @@ public class addContact extends HttpServlet{
             pw.println("Some Error with the Input");
         }
         HttpSession session = request.getSession();
-        int UID = (int) session.getAttribute("UID");
+        int UID = (int) session.getAttribute(Enums.email.getValue());
         contactDAO ctDAO = new contactDAO();
         try {
         	contact res = ctDAO.addContact(ct, UID);
