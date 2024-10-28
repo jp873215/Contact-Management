@@ -25,15 +25,13 @@ public class hash {
     public boolean verifyPassword(String storedSalt, String storedHash, String password) throws NoSuchAlgorithmException {
         byte[] salt = Base64.getDecoder().decode(storedSalt);
 
-        // Hash the provided password with the stored salt
         MessageDigest md = MessageDigest.getInstance("SHA-512");
         md.update(salt);
         md.update(password.getBytes());
         byte[] hashedPassword = md.digest();
 
-        // Convert the computed hash to a Base64 string
         String computedHash = Base64.getEncoder().encodeToString(hashedPassword);
-        // Compare the computed hash with the stored hash
+        
         return computedHash.equals(storedHash);
     }
 }

@@ -91,7 +91,8 @@
     
 </head>
 <body>
-    <form action="signup" method="post">
+    <form action="addService" method="post">
+    	<input type="hidden" name="request" value="signup" />
         <input type="text" name="name" placeholder="Enter Name" required>
         <input type="text" name="email" placeholder="Enter Email" required>
         <input type="text" name="elabel" placeholder="Enter Label for Email ID" required>

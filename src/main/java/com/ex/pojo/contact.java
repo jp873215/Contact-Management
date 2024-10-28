@@ -1,5 +1,7 @@
 package com.ex.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class contact {
     private String name;
@@ -7,15 +9,42 @@ public class contact {
     private String relatedPerson;
     private String homeAddress;
     private String workAddress;
-    private Long phoneNumber;
+    private List<Long> phoneNumber;
     private String date;
-    private String emailID;
-    private String emailIDLabel;
+    private List<String> emailID;
+    private List<String> emailIDLabel;
     private String dateLabel;
-    private String phoneLabel;
+    private List<String> phoneLabel;
     private int PID;
-  
+    private List<String> categories;
+    private List<Integer> cat_id;
     
+    
+    public contact(){
+    	categories = new ArrayList<>();
+    	cat_id= new ArrayList<>();
+    	emailID = new ArrayList<>();
+    	emailIDLabel = new ArrayList<>();
+    	phoneLabel = new ArrayList<>();
+    	phoneNumber = new ArrayList<>();
+    	
+    }
+  
+    public void setCategory(String cat_name) {
+    	this.categories.add(cat_name);
+    }
+    
+    public List<String> getCategory(){
+    	return categories;
+    }
+    
+    public void setCategoryID(int CID) {
+    	this.cat_id.add(CID);
+    }
+    
+    public List<Integer> getCategoryID(){
+    	return cat_id;
+    }
 
     public String getName() {
         return name;
@@ -65,25 +94,25 @@ public class contact {
     }
 
     public void setPhoneNumber(Long phoneNumber){
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber.add(phoneNumber);
     }
-    public Long getPhoneNumber(){
+    public List<Long> getPhoneNumber(){
         return phoneNumber;
     }
 
     public void setEmailID(String emailID){
-        this.emailID = emailID;
+        this.emailID.add(emailID);
     }
 
-    public String getEmailID(){
+    public List<String> getEmailID(){
         return emailID;
     }
 
     public void setEmailIDLabel(String emailIDLabel){
-        this.emailIDLabel = emailIDLabel;
+        this.emailIDLabel.add(emailIDLabel);
     }
 
-    public String getEmailIDLabel(){
+    public List<String> getEmailIDLabel(){
         return emailIDLabel;
     }
 
@@ -95,10 +124,10 @@ public class contact {
     }
 
     public void setPhoneLabel(String phoneLabel){
-        this.phoneLabel = phoneLabel;
+        this.phoneLabel.add(phoneLabel);
     }
 
-    public String getPhoneLabel(){
+    public List<String> getPhoneLabel(){
         return phoneLabel;
     }
 

@@ -1,8 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +15,7 @@
             height: 100vh;
             margin: 0;
         }
-    
+
         form {
             background: white;
             padding: 2rem;
@@ -28,23 +23,24 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             width: 300px;
         }
-    
+
         input[type="text"],
         input[type="password"] {
-            width: 100%;
+            width: calc(100% - 20px); /* Adjusts width accounting for padding */
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
             transition: border-color 0.3s;
+            font-size: 16px; /* Increase font size for better visibility */
         }
-    
+
         input[type="text"]:focus,
         input[type="password"]:focus {
             border-color: #007BFF;
             outline: none;
         }
-    
+
         input[type="submit"] {
             background-color: #007BFF;
             color: white;
@@ -54,30 +50,31 @@
             cursor: pointer;
             width: 100%;
             transition: background-color 0.3s;
+            font-size: 16px; /* Increase font size for better visibility */
         }
-    
+
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
-    
+
         p {
             text-align: center;
             margin-top: 1rem;
         }
-    
+
         a {
             color: #007BFF;
             text-decoration: none;
         }
-    
+
         a:hover {
             text-decoration: underline;
         }
     </style>
-    
 </head>
 <body>
-    <form action="login" method="post">
+    <form action="addService" method="post">
+    	<input type="hidden" name="request" value="login" />
         <input type="text" name="email" placeholder="Enter Mail" required>
         <input type="password" name="password" placeholder="Enter Password" required>
         <input type="submit">

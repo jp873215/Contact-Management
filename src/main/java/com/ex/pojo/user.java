@@ -1,23 +1,35 @@
 package com.ex.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class user {
     private String name;
     private String gender;
-//    private String relatedPerson;
     private String homeAddress;
     private String workAddress;
-    private Long phoneNumber;
-    //private String date;
-    private String emailID;
-    private String emailIDLabel;
-    private int starred;
-    //private String dateLabel;
-    private String phoneLabel;
+    private List<Long> phoneNumber;//for 
+    private List<String> emailID;
+    private List<String> emailIDLabel;
+    private List<String> phoneNumberLabel;
     private int UID;
     private String password;
-    private String salt;
+    private List<String> category_name;
+    private List<Integer> category_id;
 
-
+    
+    public user() {
+        phoneNumber = new ArrayList<>();
+        emailID = new ArrayList<>();
+        emailIDLabel = new ArrayList<>();
+        phoneNumberLabel = new ArrayList<>();
+        category_name = new ArrayList<>();
+        category_id = new ArrayList<>();
+    }
+/*
+ * I want to store list of emails, category, phon
+ */
     public String getName() {
         return name;
     }
@@ -32,14 +44,14 @@ public class user {
     public int getUID() {
     	return UID;
     }
-    
-    public void setstarred(int starred) {
-    	this.starred = starred;
-    }
-    
-    public int getstarred() {
-    	return starred;
-    }
+//    
+//    public void setstarred(int starred) {
+//    	this.starred = starred;
+//    }
+//    
+//    public int getstarred() {
+//    	return starred;
+//    }
     
     public String getGender() {
         return gender;
@@ -64,15 +76,7 @@ public class user {
 //    public void setRelatedPerson(String relatedPerson) {
 //        this.relatedPerson = relatedPerson;
 //    }
-    
-    public String getSalt() {
-        return salt;
-    }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-    
     public String getHomeAddress() {
         return homeAddress;
     }
@@ -90,25 +94,25 @@ public class user {
     }
 
     public void setPhoneNumber(Long phoneNumber){
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber.add(phoneNumber);
     }
-    public Long getPhoneNumber(){
+    public List<Long> getPhoneNumber(){
         return phoneNumber;
     }
 
     public void setEmailID(String emailID){
-        this.emailID = emailID;
+        this.emailID.add(emailID);
     }
 
-    public String getEmailID(){
+    public List<String> getEmailID(){
         return emailID;
     }
 
     public void setEmailIDLabel(String emailIDLabel){
-        this.emailIDLabel = emailIDLabel;
+        this.emailIDLabel.add(emailIDLabel);
     }
 
-    public String getEmailIDLabel(){
+    public List<String> getEmailIDLabel(){
         return emailIDLabel;
     }
 
@@ -119,20 +123,31 @@ public class user {
 //        return date;
 //    }
 
-    public void setPhoneLabel(String phoneLabel){
-        this.phoneLabel = phoneLabel;
+    public void setPhoneLabel(String phoneNumberLabel){
+        this.phoneNumberLabel.add(phoneNumberLabel);
     }
 
-    public String getPhoneLabel(){
-        return phoneLabel;
+    public List<String> getPhoneLabel(){
+        return phoneNumberLabel;
     }
+//    
+    public void setCategory(String category_name) {
+    	this.category_name.add(category_name);
+    }
+    
+    public List<String>  getCategory() {
+    	return category_name;
+    }
+    
+    public void setCategoryID(Integer category_id) {
+    	this.category_id.add(category_id);
+    }
+    
+    public List<Integer>getCategoryID() {
+    	return category_id;
+    }
+    
 
-//    public void setDateLabel(String dateLabel){
-//        this.dateLabel = dateLabel;
-//    }
-//
-//    public String getDateLabel(){
-//        return dateLabel;
-//    }
+
 }
 
