@@ -181,7 +181,7 @@ public class listService extends HttpServlet {
 	        try {
 	            CID = Integer.parseInt(catIdParam);
 	        } catch (NumberFormatException e) {
-	            // Log error if needed
+
 	            System.out.println("Invalid 'cat_id' format: " + catIdParam);
 	        }
 	    }

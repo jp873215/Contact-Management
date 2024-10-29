@@ -93,7 +93,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            <!-- margin-bottom: 2rem; -->
             
         }
 
@@ -102,7 +102,8 @@
             overflow-x: auto;
             padding: 10px;
             gap: 10px;
-            padding-bottom: 20px; /* Add space below for scroll */
+            padding-bottom: 20px; 
+            cursor: pointer;
         }
 
         .category {
@@ -111,7 +112,7 @@
             padding: 10px 20px;
             box-shadow: var(--shadow);
             min-width: 150px;
-            min-height: 50px;
+            min-height: 25px;
             text-align: center;
             position: relative;
             transition: transform 0.2s ease;
@@ -163,7 +164,8 @@
         .contact-name {
             font-size: 1.2rem;
             font-weight: 500;
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 0 0;
+            text-decoration: None;
         }
 
         .contact-relation {
@@ -225,7 +227,6 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            cursor: pointer;
         }
 
         .sidebar-info {
@@ -342,8 +343,7 @@
             for (int i = 0; i < uObj.getCategory().size(); i++) {
         %>
             <div class="category">
-                <div class="category-name"><%=uObj.getCategory().get(i)%></div>
-                <div class="category-id">ID: <%= uObj.getCategoryID().get(i) %></div>
+                <div class="category-name"> <a href="listService?request=categoryMembers&cat_id=<%= (uObj.getCategoryID().get(i)) %>&cat_name=<%= uObj.getCategory().get(i) %>" style="text-decoration: none; color: black"> <%= uObj.getCategory().get(i)%> </a></div>
                 <!-- Add total number of members in the category -->
                 
             </div>

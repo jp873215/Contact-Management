@@ -17,6 +17,7 @@ public class user {
     private String password;
     private List<String> category_name;
     private List<Integer> category_id;
+    private List<Integer> category_count;
 
     
     public user() {
@@ -147,6 +148,15 @@ public class user {
     	return category_id;
     }
     
+    
+    public void setCategoryCount(Integer category_count) {
+    	this.category_count.add(category_count);
+    }
+    
+    public List<Integer> getCategoryCount(){
+    	return category_count;
+    	
+    }
 
 
 }

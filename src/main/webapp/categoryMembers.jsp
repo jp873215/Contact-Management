@@ -48,6 +48,7 @@ String catName = (String) request.getAttribute("CategoryName");
             padding: 15px;
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            pointer: cursor;
         }
 
         .contact-info {
@@ -172,7 +173,7 @@ String catName = (String) request.getAttribute("CategoryName");
 	<!-- We need to change this or else the object is passed -->
     <form action="listService" method="post">
     	<input type="hidden" name="request" value="category">
-    	<input type="submit" value="Back to Category">
+    	<input type="submit" value="Back to Category" id="openModal" style="padding: 10px; margin-bottom: 20px; background-color: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer;">
     </form>
 
     <script>
