@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.ex.DAOs.contactDAO" %>
-<%@ page import="com.ex.pojo.contact" %>
-<%@ page import="com.ex.DAOs.userDAO" %>
-<%@ page import="com.ex.pojo.*" %>
-<%@ page import="com.ex.extras.*" %>
+<%@ page import="DAOs.contactDAO" %>
+<%@ page import="POJO.contact" %>
+<%@ page import="DAOs.userDAO" %>
+<%@ page import="POJO.*" %>
+<%@ page import="Extras.*" %>
 <%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
@@ -103,7 +103,6 @@
             padding: 10px;
             gap: 10px;
             padding-bottom: 20px; 
-            cursor: pointer;
         }
 
         .category {
@@ -375,13 +374,15 @@
                     <div class="contact-details">
                         <i class="fas fa-phone"></i> <%= contacts.get(i).getPhoneNumber().get(0) %> <br/>
                         <i class="fas fa-envelope"></i> <%= contacts.get(i).getEmailID().get(0)%>
-                    </div>
+                    </div>	
                     
 					<form action="listService" method="post">
                     	<input type="hidden" name="request" value="contact">
                     	<input type="hidden" name="PID" value="<%= contacts.get(i).getPID() %>">
                         <button type="submit" class="know-more-btn">Know More</button>
                     </form>
+                   
+                    
                 </div>
             </div>
         <%
@@ -434,5 +435,20 @@
             window.location.href = "login.jsp"; 
         </script>
     <% } %>
+    
+    
+    <script>
+    function copyContactDetails(name, phone, email) {
+        console.log("Copying details:", { name, phone, email }); // Debugging line
+        const details = `Name: ${name}\nPhone: ${phone}\nEmail: ${email}`;
+        navigator.clipboard.writeText(details).then(() => {
+            alert('Contact details copied to clipboard');
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+
+
+    </script>
 </body>
 </html>

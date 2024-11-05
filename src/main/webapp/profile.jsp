@@ -1,6 +1,6 @@
-<%@ page import="com.ex.pojo.*" %>
-<%@ page import="com.ex.DAOs.*" %>
-<%@ page import="com.ex.extras.*" %>
+<%@ page import="POJO.*" %>
+<%@ page import="DAOs.*" %>
+<%@ page import="Extras.*" %>
 <%@ page import="java.util.*" %>
 
 <%

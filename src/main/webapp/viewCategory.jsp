@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="com.ex.DAOs.contactDAO" %>
-<%@ page import="com.ex.pojo.contact" %>
+<%@ page import="DAOs.contactDAO" %>
+<%@ page import="POJO.contact" %>
 
 <!DOCTYPE html>
 <html lang="en">

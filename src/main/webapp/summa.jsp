@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.ex.DAOs.contactDAO" %>
-<%@ page import="com.ex.pojo.contact" %>
-<%@ page import="com.ex.DAOs.userDAO" %>
-<%@ page import="com.ex.pojo.*" %>
-<%@ page import="com.ex.extras.*" %>
+<%@ page import="DAOs.contactDAO" %>
+<%@ page import="POJO.contact" %>
+<%@ page import="DAOs.userDAO" %>
+<%@ page import="POJO.*" %>
+<%@ page import="Extras.*" %>
 <%@ page import="java.util.*" %>
 
 <!DOCTYPE html>

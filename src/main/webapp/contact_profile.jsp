@@ -1,5 +1,5 @@
-<%@ page import="com.ex.pojo.*" %>
-<%@ page import="com.ex.DAOs.*" %>
+<%@ page import="POJO.*" %>
+<%@ page import="DAOs.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
